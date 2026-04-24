@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hudzaifah · Interactive Portfolio Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-navy: #0a192f;
+            --slate-grey: #8892b0;
+            --light-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --accent: #64ffda;
+            --accent-glow: rgba(100, 255, 218, 0.3);
+            --card-bg: #112240;
+            --card-hover: #1a2f4e;
+            --grad-border: linear-gradient(145deg, #64ffda30, #0a192f);
+            --shadow-sm: 0 10px 30px -15px rgba(0,0,0,0.3);
+            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: radial-gradient(circle at 10% 30%, #0a1a2f, #051020);
+            color: var(--slate-grey);
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* header dengan scanline effect */
+        .profile-header {
+            background: var(--card-bg);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100,255,218,0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s;
+            pointer-events: none;
+        }
+
+        .profile-header:hover::before {
+            opacity: 1;
+        }
+
+        .profile-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent) 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .profile-header .title {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: inline-block;
+            border-bottom: 2px dashed var(--accent);
+            padding-bottom: 0.25rem;
+        }
+
+        /* layout grid baru: 2 kolom dengan tabel interaktif */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 2rem;
+        }
+
+        /* sidebar modern */
+        .sidebar {
+            background: var(--card-bg);
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            color: var(--light-slate);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .personal-detail {
+            margin-bottom: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            border-bottom: 1px solid rgba(100,255,218,0.1);
+            padding-bottom: 0.8rem;
+        }
+
+        .personal-detail label {
+            color: var(--accent);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .personal-detail span {
+            font-weight: 500;
+            color: var(--light-slate);
+            font-size: 0.95rem;
+        }
+
+        /* MAIN AREA */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            transform: translateY(-3px);
+        }
+
+        .content-card h2 {
+            font-size: 1.7rem;
+            color: var(--light-slate);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-card h2 i {
+            color: var(--accent);
+            font-size: 1.6rem;
+        }
+
+        /* ---- TABEL INTERAKTIF DAN HIDUP (Project & Achievement TABLE) ---- */
+        .interactive-table-wrapper {
+            overflow-x: auto;
+            border-radius: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 1rem 1rem;
+            background: rgba(100, 255, 218, 0.05);
+            color: var(--accent);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .data-table td {
+            padding: 1rem 1rem;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.15);
+            color: var(--light-slate);
+            transition: all 0.2s;
+        }
+
+        .data-table tr {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .data-table tr:hover td {
+            background: rgba(100, 255, 218, 0.08);
+            transform: scale(1.01);
+            color: white;
+            border-bottom-color: var(--accent);
+        }
+
+        /* badge interaktif */
+        .badge-status {
+            background: rgba(100,255,218,0.15);
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .badge-status i {
+            font-size: 0.7rem;
+            margin-right: 4px;
+        }
+
+        .progress-indicator {
+            width: 90px;
+            background: #1e2f47;
+            border-radius: 20px;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--accent);
+            width: 0%;
+            height: 100%;
+            border-radius: 20px;
+            transition: width 1s ease-out;
+        }
+
+        /* tabel statistik skill yang lebih modern */
+        .skill-matrix {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .pill-skill {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100,255,218,0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: 0.15s linear;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pill-skill:hover {
+            background: var(--accent);
+            color: var(--deep-navy);
+            transform: translateY(-2px);
+            cursor: default;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        /* contact strip */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .contact-item {
+            background: rgba(100,255,218,0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            transition: var(--transition);
+        }
+        .contact-item i {
+            color: var(--accent);
+            width: 28px;
+        }
+        .contact-item:hover {
+            background: rgba(100,255,218,0.2);
+            transform: translateX(5px);
+        }
+
+        /* footer animasi */
+        .footer-wave {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5e7a9a;
+        }
+
+        @media (max-width: 880px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1rem;
+            }
+            .profile-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header dengan efek neon -->
+    <header class="profile-header">
+        <h1>Hudzaifah <span style="font-size: 2rem;">⚡</span></h1>
+        <p class="title"><i class="fas fa-laptop-code"></i> Informatics Student | Multimedia Creator | Hafidz in Progress</p>
+        <div style="margin-top: 1rem; font-size: 0.85rem;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Yogyakarta, ID &nbsp;|&nbsp;
+            <i class="fas fa-book-open"></i> Qur'an Memorizer &nbsp;|&nbsp;
+            <i class="fas fa-camera"></i> Visual Storyteller
+        </div>
+    </header>
+
+    <!-- Grid dashboard utama -->
+    <div class="dashboard-grid">
+        <!-- Sidebar profil -->
+        <aside class="sidebar">
+            <h2><i class="fas fa-user-astronaut"></i> Personal</h2>
+            <div class="personal-detail">
+                <label><i class="fas fa-graduation-cap"></i> Education</label>
+                <span>Informatics — Universitas AKPRIND</span>
+            </div>
+            <div class="personal-detail">
+                <label><i class="fas fa-mosque"></i> Pesantren</label>
+                <span>Pondok Pesantren Taruna Al Qur'an</span>
+            </div>
+            <div class="personal-detail">
+                <label><i class="fas fa-bullseye"></i> Focus</label>
+                <span>IT, Multimedia, Dakwah Digital</span>
+            </div>
+            <div class="personal-detail">
+                <label><i class="fas fa-language"></i> Languages</label>
+                <span>Indonesian, English (Intermediate)</span>
+            </div>
+            <div class="personal-detail">
+                <label><i class="fas fa-handshake"></i> Availability</label>
+                <span>Open for Collab & Freelance</span>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <div class="progress-indicator" style="margin-bottom: 6px; width:100%">
+                    <div class="progress-fill" style="width: 82%;"></div>
+                </div>
+                <small><i class="fas fa-chart-line"></i> Commitment level : #ReadyToImpact</small>
+            </div>
+        </aside>
+
+        <!-- Main konten dengan tabel yang hidup & interaktif -->
+        <div class="main-content">
+
+            <!-- About section -->
+            <div class="content-card">
+                <h2><i class="fas fa-feather-alt"></i> About Me</h2>
+                <p style="margin-bottom: 0.5rem;">Mahasiswa Informatika & Santri penghafal Al-Qur’an yang menggabungkan ketajaman teknologi dengan nilai-nilai islami. Saya aktif mengembangkan konten kreatif (fotografi, videografi) serta membangun sistem edukasi berbasis gamifikasi untuk hafalan Qur’an. <strong>💡 #Tech4Good</strong></p>
+            </div>
+
+            <!-- 🔥 TABEL INTERAKTIF DAN HIDUP : Proyek & Pencapaian Utama -->
+            <div class="content-card">
+                <h2><i class="fas fa-table-list"></i> Project & Milestone Timeline</h2>
+                <div class="interactive-table-wrapper">
+                    <table class="data-table" id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Project / Activity</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="alert('✨ Manajemen hafalan berbasis gamifikasi — kolaborasi dengan pondok')">
+                                <td><i class="fas fa-gamepad" style="color:#64ffda; margin-right:8px;"></i> Qur'an Gamification System</td>
+                                <td>Lead Dev & Designer</td>
+                                <td><span class="badge-status"><i class="fas fa-cogs"></i> Development</span></td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 68%;"></div></div></td>
+                            </tr>
+                            <tr onclick="alert('📸 Dokumentasi event nasional dan konten dakwah visual')">
+                                <td><i class="fas fa-video" style="color:#64ffda; margin-right:8px;"></i> Multimedia Content Series</td>
+                                <td>Videographer/Editor</td>
+                                <td><span class="badge-status"><i class="fas fa-check-circle"></i> Active</span></td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 90%;"></div></div></td>
+                            </tr>
+                            <tr onclick="alert('🏆 Arabian Light: kuliner Timur Tengah hits di Jogja — omzet meningkat 40%')">
+                                <td><i class="fas fa-utensils" style="color:#64ffda; margin-right:8px;"></i> Arabian Light (F&B Business)</td>
+                                <td>Owner & Brand Manager</td>
+                                <td><span class="badge-status"><i class="fas fa-rocket"></i> Scaling</span></td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 85%;"></div></div></td>
+                            </tr>
+                            <tr onclick="alert('🤝 Saya membangun komunitas edutech & podcast ngaji digital')">
+                                <td><i class="fas fa-users" style="color:#64ffda; margin-right:8px;"></i> Digital Dakwah & Podcast</td>
+                                <td>Creator & Host</td>
+                                <td><span class="badge-status"><i class="fas fa-microphone-alt"></i> Ongoing</span></td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 55%;"></div></div></td>
+                            </tr>
+                            <tr onclick="alert('📊 Aplikasi manajemen inventaris UMKM berbasis web (laravel)')">
+                                <td><i class="fas fa-chart-simple" style="color:#64ffda; margin-right:8px;"></i> Inventory Web App</td>
+                                <td>Fullstack Intern</td>
+                                <td><span class="badge-status"><i class="fas fa-code-branch"></i> Prototype</span></td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 42%;"></div></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="font-size: 0.7rem; margin-top: 12px; text-align: right; opacity: 0.7;">
+                    <i class="fas fa-mouse-pointer"></i> Klik baris untuk melihat detail proyek ✨
+                </div>
+            </div>
+
+            <!-- Experience ringkas + tabel interaktif kedua (Skill Matrix level) -->
+            <div class="content-card">
+                <h2><i class="fas fa-briefcase"></i> Experience Radar</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between;">
+                    <div style="flex:1; min-width: 180px;">
+                        <h3 style="color: var(--accent);"><i class="fas fa-camera-retro"></i> Multimedia Creator</h3>
+                        <p style="font-size: 0.85rem;">Fotografer & Videografer untuk event pesantren, prewedding & konten sosial. Memiliki portofolio dokumentasi nasional.</p>
+                    </div>
+                    <div style="flex:1; min-width: 180px;">
+                        <h3 style="color: var(--accent);"><i class="fas fa-chalkboard-user"></i> IT Project Dev</h3>
+                        <p style="font-size: 0.85rem;">Mengembangkan sistem informasi hafalan Al-Qur'an + gamifikasi. Memanfaatkan web modern & UI/UX.</p>
+                    </div>
+                    <div style="flex:1; min-width: 180px;">
+                        <h3 style="color: var(--accent);"><i class="fas fa-store"></i> Entrepreneur</h3>
+                        <p style="font-size: 0.85rem;">Owner Arabian Light (Yogyakarta) – bisnis kuliner Timur Tengah dengan strategi digital marketing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabel interaktif KEDUA: Live skill tracker + hover animasi -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-line"></i> Competency Matrix <span style="font-size:0.85rem;">(interaktif)</span></h2>
+                <div class="interactive-table-wrapper">
+                    <table class="data-table" id="skillTable">
+                        <thead>
+                            <tr>
+                                <th>Skill Area</th>
+                                <th>Proficiency</th>
+                                <th>Latest Project</th>
+                                <th>🔥 Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="alert('C++ dan DSA: sedang mengerjakan backend logic gamifikasi')">
+                                <td><i class="fab fa-cuttlefish"></i> C++ / Algorithms</td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 75%;"></div></div></td>
+                                <td>Gamification Engine</td>
+                                <td><span style="color:#64ffda;"><i class="fas fa-arrow-up"></i> +12%</span></td>
+                            </tr>
+                            <tr onclick="alert('Web Dev: portfolio interaktif, frontend modern')">
+                                <td><i class="fab fa-html5"></i> Web Dev (HTML/CSS/JS)</td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 82%;"></div></div></td>
+                                <td>Portfolio Interaktif</td>
+                                <td><span style="color:#64ffda;"><i class="fas fa-chart-line"></i> advanced</span></td>
+                            </tr>
+                            <tr onclick="alert('Video editing: Adobe Premiere & CapCut proyek konten')">
+                                <td><i class="fas fa-film"></i> Video Editing</td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 88%;"></div></div></td>
+                                <td>Doc. Islamic Event</td>
+                                <td><span style="color:#64ffda;"><i class="fas fa-fire"></i> Hot</span></td>
+                            </tr>
+                            <tr onclick="alert('UI/UX Figma: membuat prototype aplikasi hafalan')">
+                                <td><i class="fas fa-pen-ruler"></i> UI/UX Design</td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 70%;"></div></div></td>
+                                <td>Quran App Design</td>
+                                <td><span style="color:#64ffda;"><i class="fas fa-chart-simple"></i> improving</span></td>
+                            </tr>
+                            <tr onclick="alert('Photography & lighting technique untuk personal branding')">
+                                <td><i class="fas fa-camera"></i> Photography</td>
+                                <td><div class="progress-indicator"><div class="progress-fill" style="width: 85%;"></div></div></td>
+                                <td>Pre-wedding & Event</td>
+                                <td><span style="color:#64ffda;"><i class="fas fa-star"></i> expert track</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 12px; font-size:0.7rem; text-align:left">
+                    <i class="fas fa-hand-pointer"></i> Klik baris skill untuk info lebih dalam — Progress bar dinamis dan interaktif!
+                </div>
+            </div>
+
+            <!-- Skills grid + contact dengan sentuhan interaktif -->
+            <div class="content-card">
+                <h2><i class="fas fa-cogs"></i> Toolkit & Certifications</h2>
+                <div class="skill-matrix">
+                    <span class="pill-skill"><i class="fab fa-figma"></i> Figma</span>
+                    <span class="pill-skill"><i class="fab fa-adobe"></i> Premiere Pro</span>
+                    <span class="pill-skill"><i class="fas fa-chart-line"></i> Google Analytics</span>
+                    <span class="pill-skill"><i class="fas fa-database"></i> SQL Lite</span>
+                    <span class="pill-skill"><i class="fas fa-code"></i> React Basic</span>
+                    <span class="pill-skill"><i class="fas fa-islam"></i> Tahfidz 4 Juz</span>
+                    <span class="pill-skill"><i class="fas fa-photo-video"></i> DaVinci Resolve</span>
+                </div>
+                <hr style="border-color: #1e3a5f; margin: 1rem 0;">
+                <h2><i class="fas fa-address-card"></i> Connect & Collaborate</h2>
+                <div class="contact-links">
+                    <div class="contact-item"><i class="fas fa-envelope"></i> zaytmoyaa@gmail.com</div>
+                    <div class="contact-item"><i class="fab fa-instagram"></i> @heydzef</div>
+                    <div class="contact-item"><i class="fab fa-whatsapp"></i> 085728151562</div>
+                    <div class="contact-item"><i class="fab fa-github"></i> /hudzaifah-dev</div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.8rem;"><i class="fas fa-clock"></i> Respon cepat untuk kolaborasi dakwah digital & proyek teknologi</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-wave">
+        <i class="fas fa-quran"></i> "Sebaik-baik manusia adalah yang bermanfaat bagi orang lain" — Hudzaifah | Interactive Dashboard v2
+    </div>
+</div>
+
+<!-- tambahan efek interaktif untuk progress bars yang hidup, animasi load -->
+<script>
+    (function() {
+        // Membuat semua progress bar memiliki animasi lebar saat load (menambah kesan hidup)
+        const progressFills = document.querySelectorAll('.progress-fill');
+        progressFills.forEach(fill => {
+            const widthStyle = fill.style.width;
+            if(widthStyle) {
+                // reset dulu untuk trigger animasi
+                const targetWidth = widthStyle;
+                fill.style.width = '0%';
+                setTimeout(() => {
+                    fill.style.width = targetWidth;
+                }, 100);
+            }
+        });
+
+        // Efek tambahan: setiap baris tabel memiliki event mouseover yang memberi efek glow dinamis
+        const allTableRows = document.querySelectorAll('.data-table tbody tr');
+        allTableRows.forEach(row => {
+            row.addEventListener('mouseenter', function(e) {
+                this.style.transition = 'all 0.2s';
+                this.style.backgroundColor = 'rgba(100, 255, 218, 0.05)';
+            });
+            row.addEventListener('mouseleave', function(e) {
+                this.style.backgroundColor = 'transparent';
+            });
+            // tooltip style sudah ada onclick
+        });
+
+        // tabel kedua juga sudah interaktif via onclick, 
+        // lalu menambahkan efek realtime: menampilkan pesan keren di console (oke)
+        console.log('✨ Interactive table mode ON — Klik row untuk insight setiap proyek dan skill');
+        
+        // Tambahkan notifikasi kecil sederhana untuk menunjukkan bahwa tabel hidup
+        const tableHeaders = document.querySelectorAll('.data-table th');
+        tableHeaders.forEach(th => {
+            th.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // efek informatif: header bisa di klik memberi info sorting (simulasi)
+                // hanya estetika interaktif
+                console.log('📊 Header terklik — bayangkan sorting data dinamis!');
+            });
+        });
+
+        // Extras: membuat hover di badge status lebih hidup
+        const badges = document.querySelectorAll('.badge-status');
+        badges.forEach(b => {
+            b.addEventListener('mouseover', () => {
+                b.style.transform = 'scale(1.05)';
+                b.style.filter = 'drop-shadow(0 0 4px #64ffda)';
+            });
+            b.addEventListener('mouseout', () => {
+                b.style.transform = 'scale(1)';
+                b.style.filter = 'none';
+            });
+        });
+
+        // animasi shimmer untuk progress bar setelah 3 detik? supaya lebih hidup lagi (refresh progress)
+        setInterval(() => {
+            // get all progress fill with width not 100% ? random shimmer untuk kesan realtime dan dinamis
+            const allProgress = document.querySelectorAll('.progress-fill');
+            allProgress.forEach(p => {
+                if(p.style.width && p.style.width !== '100%') {
+                    // efek kilau tipis
+                    p.style.opacity = '0.9';
+                    setTimeout(() => {
+                        if(p) p.style.opacity = '1';
+                    }, 200);
+                }
+            });
+        }, 4000);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Diri</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "aside main"
+                "footer footer";
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        header {
+            grid-area: header;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        aside {
+            grid-area: aside;
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        aside img {
+            border-radius: 50%;
+            width: 120px;
+        }
+
+        main {
+            grid-area: main;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            width: 40%;
+        }
+
+        footer {
+            grid-area: footer;
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>Biodata Diri</h1>
+    </header>
+
+    <aside>
+        <img src="_MG_9921.JPG" alt="Foto Profil">
+        <h3>Hudzaifah</h3>
+        <p>Mahasiswa Informatika</p>
+    </aside>
+
+    <main>
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>Hudzaifah</td>
+            </tr>
+            <tr>
+                <td>Tempat, Tanggal Lahir</td>
+                <td>Semarang, 06 Desember 2004</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>Jln. Lempongsari 4a, Sariharjo, Ngaglik, Sleman</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>zaytmoyaa@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>Fotografi, Editing, Mancing</td>
+            </tr>
+        </table>
+    </main>
+</div>
+
+</body>
+</html>
