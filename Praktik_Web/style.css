@@ -1,0 +1,106 @@
+/* Reset margin dan padding bawaan browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    padding: 20px;
+    color: #333;
+}
+
+/* Pengaturan CSS Grid Utama */
+.container {
+    display: grid;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 20px; /* Jarak antar elemen grid */
+    
+    /* Membagi menjadi 2 kolom: 250px untuk sidebar, sisanya (1fr) untuk konten */
+    grid-template-columns: 250px 1fr;
+    
+    /* Menggambar layout halaman */
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "footer footer";
+}
+
+/* Memasukkan elemen ke area Grid masing-masing */
+.header { 
+    grid-area: header; 
+    background-color: #2c3e50; 
+    color: white; 
+    padding: 20px; 
+    text-align: center; 
+    border-radius: 8px; 
+}
+
+.sidebar { 
+    grid-area: sidebar; 
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+}
+
+.content { 
+    grid-area: content; 
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+}
+
+.footer { 
+    grid-area: footer; 
+    text-align: center; 
+    padding: 15px; 
+    font-size: 0.9em; 
+    color: #666;
+}
+
+/* Desain untuk Foto */
+.foto-profil img {
+    width: 100%;
+    border-radius: 50%; /* Membuat foto menjadi bulat */
+    margin-bottom: 15px;
+}
+
+/* Desain untuk Tabel HTML */
+.tabel-biodata {
+    width: 100%;
+    border-collapse: collapse; /* Menyatukan garis batas tabel */
+    margin-top: 15px;
+}
+
+.tabel-biodata th, .tabel-biodata td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabel-biodata thead tr {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Memberikan warna selang-seling pada baris tabel agar mudah dibaca */
+.tabel-biodata tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsif: Mengubah layout menjadi 1 kolom jika dibuka di HP */
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "content"
+            "footer";
+    }
+}
