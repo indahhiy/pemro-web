@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>Biodata</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+        }
+
+        /* GRID LAYOUT */
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "foto biodata";
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            width: 60%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-image {
+            grid-area: foto;
+            text-align: center;
+        }
+
+        .profile-image img {
+            height: 250px;
+            width: 150px;
+            border-radius: 15px;
+            border: 4px solid #ff7eb3;
+        }
+
+        .content {
+            grid-area: biodata;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4d88;
+        }
+
+        h3 {
+            text-align: center;
+            color: #555;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            width: 40%;
+            color: #ff4d88;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffe6eb;
+        }
+
+        tr:hover {
+            background-color: #ffd1dc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="profile-image">
+        <img src="foto/serlia.jpg">
+    </div>
+
+    <div class="content">
+        <h1>BIODATA DIRI</h1>
+        <h3>Biodata Serlia</h3>
+
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>Serlia Wati</td>
+            </tr>
+            <tr>
+                <td>NIM</td>
+                <td>241054001</td>
+            </tr>
+            <tr>
+                <td>Tempat / Tgl Lahir</td>
+                <td>Malang / 24 April 2006</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>Semarang</td>
+            </tr>
+            <tr>
+                <td>Semester</td>
+                <td>4</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
