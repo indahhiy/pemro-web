@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Diri</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar content"
+                "footer footer";
+            grid-template-columns: 1fr 3fr;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .sidebar img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 50%;
+        }
+
+        .content {
+            grid-area: content;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+            width: 30%;
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            grid-area: footer;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+  
+    <header class="header">
+        <h1>Biodata Diri</h1>
+    </header>
+
+    <aside class="sidebar">
+        <img src="asseet/foto.jpeg" alt="Foto Profil">
+    </aside>
+
+    <main class="content">
+        <table>
+            <tr>
+                <th>Nama</th>
+                <td>Veronica Finda M</td>
+            </tr>
+            <tr>
+                <th>NIM</th>
+                <td>241057028</td>
+            </tr>
+            <tr>
+                <th>Tempat, Tanggal Lahir</th>
+                <td>Gunungkidul, 1 Januari 2000</td>
+            </tr>
+            <tr>
+                <th>Alamat</th>
+                <td>Bandung, Playen, GK</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>veronica@email.com</td>
+            </tr>
+        </table>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Biodata Mahasiswa</p>
+    </footer>
+</div>
+
+</body>
+</html>
