@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Diri</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 200px;
+            height: 210px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            width: 30%;
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        td,
+        th {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title">Biodata Diri</div>
+
+    <div class="container-grid">
+
+        <div class="profile">
+            <img src="../foto/ilham.jpeg" alt="Foto Ilham">
+            <h5>Ilham</h5>
+            <p>Mahasiswa</p>
+        </div>
+
+        <div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <td>Zarie Ilham Junaedi</td>
+                </tr>
+                <tr>
+                    <th>Tempat, Tanggal Lahir</th>
+                    <td>Jakarta, 29 September 2005</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>Jakarta</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>zarie705@email.com</td>
+                </tr>
+                <tr>
+                    <th>No HP</th>
+                    <td>081382003122</td>
+                </tr>
+                <tr>
+                    <th>Hobi</th>
+                    <td>Ngoding, Gaming</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
