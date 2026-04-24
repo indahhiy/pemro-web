@@ -2,85 +2,130 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Diri</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>Biodata Futuristic</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .container {
+            width: 850px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+        }
+
+        .box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #38bdf8;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px #38bdf8;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 20px #38bdf8;
+            transform: scale(1.02);
+        }
+
+        .header {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #38bdf8;
+        }
+
+        .foto {
+            text-align: center;
+        }
+
+        .foto img {
+            width: 120px;
+            border-radius: 10px;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 15px #38bdf8;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(56,189,248,0.3);
+        }
+
+        td:first-child {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container-biodata">
-        <div class="card-biodata">
-            <!-- Header dengan nama dan profil -->
-            <div class="header-biodata">
-                <div class="profile-image">👤</div>
-                <h1>Nama Lengkap Anda</h1>
-                <p>Mahasiswa | Developer | Tech Enthusiast</p>
-            </div>
 
-            <!-- Konten biodata -->
-            <div class="content-biodata">
-                <!-- Tabel informasi pribadi -->
-                <h2>Informasi Pribadi</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Nama Lengkap</td>
-                            <td>Muhammad Rizki Pratama</td>
-                        </tr>
-                        <tr>
-                            <td>Tempat Tanggal Lahir</td>
-                            <td>Jakarta, 15 Juni 2003</td>
-                        </tr>
-                        <tr>
-                            <td>Jenis Kelamin</td>
-                            <td>Laki-laki</td>
-                        </tr>
-                        <tr>
-                            <td>Agama</td>
-                            <td>Islam</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>Jl. Merdeka No. 123, Jakarta Selatan</td>
-                        </tr>
-                        <tr>
-                            <td>No. Telepon</td>
-                            <td>+62 812-3456-7890</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>rizki.pratama@email.com</td>
-                        </tr>
-                    </tbody>
-                </table>
+<div class="container">
 
-                <!-- Grid layout untuk informasi tambahan -->
-                <h2 style="margin-top: 40px;">Informasi Tambahan</h2>
-                <div class="grid-section">
-                    <div class="info-box">
-                        <h3>📚 Pendidikan</h3>
-                        <p>Universitas XYZ<br>Program Studi: Informatika<br>Tahun Masuk: 2021</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>💼 Keahlian</h3>
-                        <p>HTML, CSS, JavaScript<br>Bootstrap, React<br>Web Design & Development</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>🏆 Prestasi</h3>
-                        <p>Juara 1 Web Design<br>Best Student 2023<br>Outstanding Project Award</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>🎯 Hobi</h3>
-                        <p>Coding, Desain Grafis<br>Membaca, Traveling<br>Photography</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Header -->
+    <div class="box header">BIODATA FUTURISTIC</div>
+
+    <!-- Foto -->
+    <div class="box foto">
+        <img src="Arya.jpeg">
+        <p>AryaSuta Khafid</p>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Biodata -->
+    <div class="box">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>: AryaSuta Khafid</td>
+            </tr>
+            <tr>
+                <td>TTL</td>
+                <td>: Sampit, 24 Agustus 2006</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>: Laki-laki</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>: Yogyakarta</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>: aryasutakhafid72@gmail.com</td>
+            </tr>
+            <tr>
+                <td>No HP</td>
+                <td>: 085752986954</td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>: Gaming</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
 </body>
 </html>
