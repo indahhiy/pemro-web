@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1b7443, #764ba2);
+}
+
+/* GRID utama */
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+/* Card */
+.card {
+    background: rgb(0, 0, 0);
+    width: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+/* Profile atas */
+.profile {
+    background: #4facfe;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile img {
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-bottom: 10px;
+}
+
+/* Biodata bawah */
+.biodata {
+    color: white;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 8px;
+}
+
+/* efek hover biar beda */
+.card:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
