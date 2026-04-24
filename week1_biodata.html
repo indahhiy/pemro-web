@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Diri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Grid Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 150px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+        }
+
+        .profile h2 {
+            margin-top: 10px;
+        }
+
+        .biodata table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .biodata td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .biodata td:first-child {
+            font-weight: bold;
+            width: 40%;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Biodata Diri</h1>
+
+<div class="container">
+    <!-- Bagian Foto -->
+    <div class="profile">
+        <img src="https://via.placeholder.com/150" alt="Foto Profil">
+        <h2>Yusuf</h2>
+    </div>
+
+    <div class="biodata">
+        <table>
+            <tr>
+                <td>Nama Lengkap</td>
+                <td> Muhammad Yusuf Arjanto</td>
+            </tr>
+            <tr>
+                <td>Tempat, Tanggal Lahir</td>
+                <td>Yogyakarta, 1 Januari 2000</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>Laki-laki</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>Depok, Yogyakarta</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>yusufarjanto@gmail.com</td>
+            </tr>
+            <tr>
+                <td>No. HP</td>
+                <td>0812-7883-4832</td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>Ngoding, Gaming</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
