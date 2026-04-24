@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Futuristic</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .container {
+            width: 850px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+        }
+
+        .box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #38bdf8;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px #38bdf8;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 20px #38bdf8;
+            transform: scale(1.02);
+        }
+
+        .header {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #38bdf8;
+        }
+
+        .foto {
+            text-align: center;
+        }
+
+        .foto img {
+            width: 120px;
+            border-radius: 10px;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 15px #38bdf8;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(56,189,248,0.3);
+        }
+
+        td:first-child {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .footer {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="box header">BIODATA FUTURISTIC</div>
+
+    <!-- Foto -->
+    <div class="box foto">
+        <img src="Arya.jpeg">
+        <p>AryaSuta Khafid</p>
+    </div>
+
+    <!-- Biodata -->
+    <div class="box">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>: AryaSuta Khafid</td>
+            </tr>
+            <tr>
+                <td>TTL</td>
+                <td>: Sampit, 24 Agustus 2006</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>: Laki-laki</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>: Yogyakarta</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>: aryasutakhafid72@gmail.com</td>
+            </tr>
+            <tr>
+                <td>No HP</td>
+                <td>: 085752986954</td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>: Gaming</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
