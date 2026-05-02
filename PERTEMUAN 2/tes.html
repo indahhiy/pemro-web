@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Example</title>
+</head>
+<body>
+
+  <h1 id="judul">Profil Saya</h1>
+
+  <div class="card">
+    <p id="nama">Nama: Indah</p>
+    <p id="status">Status: Mahasiswa</p>
+
+    <button onclick="ubahNama()">Ubah Nama</button>
+    <button onclick="ubahWarna()">Ubah Warna</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    function ubahNama() {
+      document.getElementById("nama").innerHTML = "Nama: Diva";
+    }
+
+    function ubahWarna() {
+      document.getElementById("judul").style.color = "blue";
+    }
+
+    function reset() {
+      document.getElementById("nama").innerHTML = "Nama: Indah";
+      document.getElementById("judul").style.color = "black";
+    }
+  </script>
+
+</body>
+</html>
