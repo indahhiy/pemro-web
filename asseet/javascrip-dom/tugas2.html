@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Sapa Pengguna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sapa Pengguna</h2>
+        
+        <input type="text" id="nama" placeholder="Masukkan nama kamu">
+        <br>
+        <button onclick="sapaUser()">Sapa Saya</button>
+
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        function sapaUser() {
+            let nama = document.getElementById("nama").value;
+
+            if(nama === "") {
+                document.getElementById("hasil").innerHTML = "Nama tidak boleh kosong!";
+            } else {
+                document.getElementById("hasil").innerHTML = "Halo, " + nama + "! Selamat datang 👋";
+            }
+        }
+    </script>
+
+</body>
+</html>
