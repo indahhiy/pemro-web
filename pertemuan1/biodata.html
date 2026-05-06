@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata - Anak Ke-3</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas: "foto biodata";
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .profile-image {
+            grid-area: foto;
+            text-align: center;
+            align-self: center;
+        }
+
+        .profile-image img {
+            height: 260px;
+            width: 190px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            grid-area: biodata;
+        }
+
+        h1 {
+            color: #1e3c72;
+            margin: 0;
+            border-bottom: 4px solid #00d2ff; 
+            display: inline-block;
+            font-size: 28px;
+        }
+
+        h3 {
+            color: #95a5a6;
+            font-size: 13px;
+            margin-top: 8px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f1f1f1;
+            color: #2c3e50;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            width: 38%;
+            color: #1e3c72;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f0f7ff;
+        }
+
+        tr:hover {
+            background-color: #e1efff;
+            transition: background-color 0.2s ease;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                grid-template-areas: "foto" "biodata";
+                grid-template-columns: 1fr;
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .profile-image img {
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                display: block;
+                border-bottom: 4px solid #00d2ff;
+                margin: 0 auto;
+                width: max-content;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="profile-image">
+        <img src="ismail.jpeg" alt="Foto Abdul Fattah">
+    </div>
+
+    <div class="content">
+        <h1>BIODATA DIRI</h1>
+        <h3>Informatics Student</h3>
+
+        <table>
+            <tr>
+                <td>Nama Lengkap</td>
+                <td>Abdul Fattah Ismail</td>
+            </tr>
+            <tr>
+                <td>NIM</td>
+                <td>241057021</td>
+            </tr>
+            <tr>
+                <td>Kelahiran</td>
+                <td>Klaten, 16 Januari 2005</td>
+            </tr>
+            <tr>
+                <td>Domisili</td>
+                <td>Klaten, Jawa Tengah</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>Mahasiswa Semester 4</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
