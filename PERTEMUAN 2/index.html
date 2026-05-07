@@ -2,123 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMO - DOM</title>
-    </head>
-
-
+    <title>Halaman Welcome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <h1 id ="judul">HALLO</h1>
-    <button onclick="ubahJudul()">KLIK</button>
-    <br><br>
-
-    <h2>Masukkan Nama</h2>
-    <input type="text" id="nama" placeholder="Masukkan Nama">
-    <button id="btnNama" onclick="validateForm()">Tampilkan Nama</button>
-    <p id="hasil"></p>
-    <br><br>
-
-    <h1 id="kalimat">Hai</h1>
-    <button id="btn">KLIK</button>
-
-    <h2 id="teks">Hover - kursor</h2>
-    <br><br>
-
-    <h2>Form Validasi</h2>
-    <form onsubmit="return validateForm()">
-        <label>Nama: </label><br>
-        <input type="text" id="nama" name="nama"><br><br>
-
-        <label>Email: </label><br>
-        <input type="email" id="email" name="email"><br><br>
-
-        <label>Password: </label><br>
-        <input type="password" id="password" name="password"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    <script>
-        function ubahJudul() {
-        document.getElementById("judul").innerHTML = "HAI";
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const btn = document.getElementById("btn");
-            const judul = document.getElementById("judul");
-            const kalimat = document.getElementById("kalimat");
-
-            btn.addEventListener("click", function() {
-                judul.innerHTML = "HAI";
-                kalimat.innerHTML = "Hallo, Selamat Datang!";
-            });
-        });
-
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const tombol = document.getElementById("btnNama");
-            const namaInput = document.getElementById("nama");
-            const hasil = document.getElementById("hasil");
-
-            tombol.addEventListener("click", function() {
-                const nama = namaInput.value;
-                hasil.innerHTML = "Halo, " + nama + "!";
-            });
-        });
-
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const teks = document.getElementById("teks");
-
-            teks.addEventListener("mouseover", function() {
-                teks.style.color = "red";
-            });
-
-            teks.addEventListener("mouseout", function() {
-                teks.style.color = "black";
-            });
-        });
-
-        // function validateForm() {
-        //     const namaInput = document.getElementById("nama");
-        //     const nama = namaInput.value.trim();
-
-        //     if (nama === "") {
-        //         alert("Nama tidak boleh kosong!");
-        //         return false; // Mencegah form submit
-        //     }
-
-        //     return true; // Form valid, bisa submit
-        // }
-
-
-        function validateForm() {
-            const namaInput = document.getElementById("nama");
-            const emailInput = document.getElementById("email");
-            const passwordInput = document.getElementById("password");
-
-            const nama = namaInput.value.trim();
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
-
-            if (nama === "") {
-                alert("Nama tidak boleh kosong!");
-                return false;
-            }
-
-            if (!email.includes("@")) {
-                alert("Email tidak valid!");
-                return false;
-            }
-
-            if (password.length < 6) {
-                alert("Password harus memiliki minimal 6 karakter!");
-                return false;
-            }
-
-            return true; // Form valid, bisa submit
-        }
-    </script>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+       <input type ="text" id="nama" placeholder="Masukkan Nama">
+       <br>
+       <button onclick="sapaUser()">Sapaaa</button>
+       <p id="hasil"></p>
+    </div>
 </body>
+<script src="script.js"></script>
 </html>
