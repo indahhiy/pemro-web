@@ -1,61 +1,314 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Diri</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Sapaan - JS DOM</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 32px;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .header p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #333;
+      background: #f9f9f9;
+      transition: border-color 0.25s, background 0.25s;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: #667eea;
+      background: #fff;
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .error-msg {
+      display: none;
+      color: #e74c3c;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    .btn-sapa {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-sapa:hover  { opacity: 0.9; }
+    .btn-sapa:active { transform: scale(0.98); }
+
+    #greetingBox {
+      display: none;
+      margin-top: 1.8rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f0f4ff, #f9f0ff);
+      border-radius: 14px;
+      border-left: 4px solid #667eea;
+      animation: fadeIn 0.4s ease;
+    }
+
+    #greetingBox.show { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge-time {
+      display: inline-block;
+      background: #667eea;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    #greetingName {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    #greetingMsg {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .btn-reset {
+      display: none;
+      margin-top: 1rem;
+      background: none;
+      border: 2px solid #667eea;
+      color: #667eea;
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-reset.show  { display: block; }
+    .btn-reset:hover { background: #667eea; color: #fff; }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <header class="header">
-            <h1>Profil & Biodata</h1>
-            <p>Selamat datang di halaman profil singkat saya.</p>
-        </header>
+  <div class="container">
 
-        <aside class="sidebar">
-            <div class="foto-profil">
-            </div>
-            <h3>Kontak</h3>
-            <p>📧 arfiadden@gmail.com</p>
-            <p>📍 Yogyakarta, Indonesia</p>
-        </aside>
-
-        <main class="content">
-            <h2>Data Pribadi</h2>
-            <table class="tabel-biodata">
-                <thead>
-                    <tr>
-                        <th>Kategori</th>
-                        <th>Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Pendidikan</td>
-                        <td>S1 Informatika, IST AKPRIND</td>
-                    </tr>
-                    <tr>
-                        <td>Nama</td>
-                        <td>Arfiansyah Adde Nor Rizqi</td>
-                    </tr>
-                    <tr>
-                        <td>NIM</td>
-                        <td>241053016</td>
-                    </tr>
-                    <tr>
-                        <td>Hobi</td>
-                        <td>Otomotif (Engine Tuning/Modifikasi), Gaming</td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2026 - Dibuat dengan semangat belajar Web Development.</p>
-        </footer>
+    <div class="header">
+      <div class="avatar">👋</div>
+      <h1>Halo, siapa namamu?</h1>
+      <p>Isi form di bawah untuk mendapat sapaan personal</p>
     </div>
+
+    <div class="form-group">
+      <label for="firstName">Nama Depan *</label>
+      <div class="row-2">
+        <input type="text" id="firstName" placeholder="Contoh: Budi" maxlength="30" />
+        <input type="text" id="lastName"  placeholder="Nama Belakang" maxlength="30" />
+      </div>
+      <span class="error-msg" id="nameError">⚠️ Nama depan tidak boleh kosong!</span>
+    </div>
+
+    <div class="form-group">
+      <label for="greeting">Pilih Sapaan</label>
+      <select id="greeting">
+        <option value="Halo">👋 Halo</option>
+        <option value="Selamat datang">🎉 Selamat datang</option>
+        <option value="Hai">😊 Hai</option>
+        <option value="Salam kenal">🤝 Salam kenal</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="timeOfDay">Waktu Sekarang</label>
+      <select id="timeOfDay">
+        <option value="pagi">🌅 Pagi</option>
+        <option value="siang">☀️ Siang</option>
+        <option value="sore">🌇 Sore</option>
+        <option value="malam">🌙 Malam</option>
+      </select>
+    </div>
+
+    <button class="btn-sapa" id="btnSapa">✨ Sapa Saya!</button>
+
+    <div id="greetingBox">
+      <span class="badge-time" id="badgeTime"></span>
+      <p id="greetingName"></p>
+      <p id="greetingMsg"></p>
+    </div>
+
+    <button class="btn-reset" id="btnReset" onclick="resetForm()">🔄 Ulangi</button>
+
+  </div>
+
+  <script>
+    const pesanWaktu = {
+      pagi:  "Semangat pagi! Semoga harimu menyenangkan dan penuh produktivitas. ☀️",
+      siang: "Jangan lupa istirahat dan makan siang ya! Tetap semangat. 🍽️",
+      sore:  "Santai sejenak. Kamu sudah bekerja keras hari ini, keren! 🌇",
+      malam: "Selamat beristirahat. Semoga malammu tenang dan damai. 🌙"
+    };
+
+    const labelWaktu = {
+      pagi:  "Selamat Pagi 🌅",
+      siang: "Selamat Siang ☀️",
+      sore:  "Selamat Sore 🌇",
+      malam: "Selamat Malam 🌙"
+    };
+
+    const inputNamaDepan    = document.getElementById('firstName');
+    const inputNamaBelakang = document.getElementById('lastName');
+    const selectSapaan      = document.getElementById('greeting');
+    const selectWaktu       = document.getElementById('timeOfDay');
+    const btnSapa           = document.getElementById('btnSapa');
+    const greetingBox       = document.getElementById('greetingBox');
+    const badgeTime         = document.getElementById('badgeTime');
+    const greetingName      = document.getElementById('greetingName');
+    const greetingMsg       = document.getElementById('greetingMsg');
+    const errorMsg          = document.getElementById('nameError');
+    const btnReset          = document.getElementById('btnReset');
+
+    btnSapa.addEventListener('click', function () {
+      tampilkanSapaan();
+    });
+
+    inputNamaDepan.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') tampilkanSapaan();
+    });
+
+    inputNamaDepan.addEventListener('input', function () {
+      if (this.value.trim() !== '') errorMsg.style.display = 'none';
+    });
+
+    function tampilkanSapaan() {
+      const namaDepan    = inputNamaDepan.value.trim();
+      const namaBelakang = inputNamaBelakang.value.trim();
+      const sapaan       = selectSapaan.value;
+      const waktu        = selectWaktu.value;
+
+      if (namaDepan === '') {
+        errorMsg.style.display = 'block';
+        inputNamaDepan.focus();
+        greetingBox.classList.remove('show');
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+
+      const namaLengkap = namaBelakang ? namaDepan + ' ' + namaBelakang : namaDepan;
+
+      badgeTime.textContent    = labelWaktu[waktu];
+      greetingName.textContent = sapaan + ', ' + namaLengkap + '!';
+      greetingMsg.textContent  = pesanWaktu[waktu];
+
+      greetingBox.classList.add('show');
+      btnReset.classList.add('show');
+      greetingBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetForm() {
+      inputNamaDepan.value    = '';
+      inputNamaBelakang.value = '';
+      selectSapaan.value      = 'Halo';
+      selectWaktu.value       = 'pagi';
+      greetingBox.classList.remove('show');
+      btnReset.classList.remove('show');
+      errorMsg.style.display  = 'none';
+      inputNamaDepan.focus();
+    }
+  </script>
 
 </body>
 </html>
