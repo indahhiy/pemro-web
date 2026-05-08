@@ -3,169 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Marcello Gianfranfois</title>
+    <title>Biodata Marcello Gianfrancois</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2b2b3a;
-            background: linear-gradient(135deg, #1f3b70 0%, #3e6fb5 50%, #c1d6ff 100%);
-            margin: 0;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
-            align-items: start;
-            min-height: 100vh;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
-        .container {
-            max-width: 840px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.55);
+
+        body{
+            font-family:'Poppins', sans-serif;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:40px 20px;
+            background:
+                linear-gradient(rgba(8,15,40,0.75), rgba(8,15,40,0.75)),
+                url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop');
+            background-size:cover;
+            background-position:center;
         }
-        h1 {
-            color: #29317a;
-            text-align: center;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+
+        .container{
+            width:100%;
+            max-width:950px;
+            background:rgba(255,255,255,0.12);
+            backdrop-filter:blur(14px);
+            border:1px solid rgba(255,255,255,0.2);
+            border-radius:28px;
+            overflow:hidden;
+            box-shadow:0 20px 60px rgba(0,0,0,0.35);
         }
-        .profile-card {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 20px;
-            align-items: center;
-            background: linear-gradient(135deg, #e6f0ff 0%, #ffffff 100%);
-            border-radius: 18px;
-            padding: 22px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(65, 102, 204, 0.16);
+
+        .header{
+            position:relative;
+            padding:50px 40px 80px;
+            background:linear-gradient(135deg,#102a70,#3568d4,#5f8fff);
+            color:white;
         }
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(180deg, #4a66cc 0%, #1f3b70 100%);
-            display: grid;
-            place-items: center;
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            box-shadow: 0 16px 30px rgba(35, 64, 145, 0.2);
+
+        .header h1{
+            font-size:2.5rem;
+            margin-bottom:10px;
+            letter-spacing:1px;
         }
-        .profile-info {
-            display: grid;
-            gap: 6px;
+
+        .header p{
+            opacity:0.9;
+            font-size:1rem;
         }
-        .profile-info p {
-            margin: 0;
-            color: #2b2b3a;
+
+        .profile-section{
+            position:relative;
+            margin-top:-50px;
+            padding:0 40px 40px;
         }
-        .profile-info p span {
-            font-weight: 700;
-            color: #1f3b70;
+
+        .profile-card{
+            background:white;
+            border-radius:25px;
+            padding:30px;
+            display:flex;
+            align-items:center;
+            gap:30px;
+            box-shadow:0 10px 35px rgba(0,0,0,0.12);
+            flex-wrap:wrap;
         }
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
+
+        .avatar{
+            width:150px;
+            height:150px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#1d4ed8,#60a5fa);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            font-size:3rem;
+            font-weight:700;
+            border:6px solid #e8f0ff;
+            box-shadow:0 10px 25px rgba(29,78,216,0.35);
         }
-        th, td {
-            padding: 16px 18px;
-            text-align: left;
+
+        .profile-info{
+            flex:1;
         }
-        th {
-            background: linear-gradient(90deg, #4a66cc, #1f3b70);
-            color: #f4f7ff;
-            font-size: 0.96rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+
+        .profile-info h2{
+            font-size:2rem;
+            color:#1e293b;
+            margin-bottom:8px;
         }
-        tr:nth-child(odd) td {
-            background: #f6f9ff;
+
+        .nickname{
+            display:inline-block;
+            background:#dbeafe;
+            color:#1d4ed8;
+            padding:8px 18px;
+            border-radius:30px;
+            font-size:0.9rem;
+            font-weight:600;
+            margin-bottom:18px;
         }
-        tr:nth-child(even) td {
-            background: #ffffff;
+
+        .profile-info p{
+            margin:10px 0;
+            color:#475569;
+            font-size:1rem;
         }
-        tr:hover td {
-            background: #dee8ff;
+
+        .profile-info span{
+            font-weight:600;
+            color:#0f172a;
         }
-        td {
-            color: #2b2b3a;
+
+        .content{
+            padding:0 40px 45px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:25px;
         }
-        td strong {
-            color: #1f3b70;
+
+        .card{
+            background:white;
+            border-radius:22px;
+            padding:28px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.08);
+            transition:0.3s;
         }
-        td ul {
-            margin: 0;
-            padding-left: 20px;
-            list-style-type: disc;
+
+        .card:hover{
+            transform:translateY(-5px);
         }
-        td li {
-            color: #2b2b3a;
-            line-height: 1.6;
+
+        .card h3{
+            color:#1d4ed8;
+            margin-bottom:18px;
+            font-size:1.3rem;
+            border-left:5px solid #3b82f6;
+            padding-left:12px;
         }
+
+        .card ul{
+            list-style:none;
+        }
+
+        .card ul li{
+            padding:12px 15px;
+            margin-bottom:10px;
+            border-radius:12px;
+            background:#f8fbff;
+            color:#334155;
+            transition:0.3s;
+        }
+
+        .card ul li:hover{
+            background:#dbeafe;
+            transform:translateX(5px);
+        }
+
+        .footer{
+            text-align:center;
+            padding:20px;
+            background:rgba(255,255,255,0.08);
+            color:white;
+            font-size:0.95rem;
+            letter-spacing:0.5px;
+        }
+
+        @media(max-width:768px){
+
+            .header{
+                padding:40px 25px 75px;
+            }
+
+            .header h1{
+                font-size:2rem;
+            }
+
+            .profile-section{
+                padding:0 20px 30px;
+            }
+
+            .profile-card{
+                justify-content:center;
+                text-align:center;
+            }
+
+            .content{
+                grid-template-columns:1fr;
+                padding:0 20px 35px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Biodata Diri</h1>
-        <div class="profile-card">
-            <div class="avatar">MG</div>
-            <div class="profile-info">
-                <p><span>Nama:</span> Marcello Gianfrancois</p>
-                <p><span>Nama Panggung:</span> Dave Mustine</p>
-                <p><span>TTL:</span> Kepulauan Banda, 15 Februari 2005</p>
-            </div>
+
+        <div class="header">
+            <h1>BIODATA DIRI</h1>
+            <p>Personal Profile Website</p>
         </div>
-        <table>
-            <tr>
-                <th>Informasi</th>
-                <th>Detail</th>
-            </tr>
-            <tr>
-                <td>Nama</td>
-                <td>MARCELLO GIANFRANCOIS</td>
-            </tr>
-            <tr>
-                <td>Nama Panggung</td>
-                <td>Dave Mustine</td>
-            </tr>
-            <tr>
-                <td>TTL</td>
-                <td>KEPULAUAN BANDA, 15 Februari 2005</td>
-            </tr>
-            <tr>
-                <td>Pendidikan</td>
-                <td>
-                    <ul>
-                        <li>SD: STELLA MARIS</li>
-                        <li>SMP: SEMINARI SINAR BUANA SUMBA</li>
-                        <li>SMA: SEMINARI SINAR BUANA</li>
-                        <li>KULIAH: UNIVERSITAS AKPRIND YOGYAKARTA</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Hobi</td>
-                <td>
-                    <ul>
-                        <li>MENCARI HAL-HAL BARU</li>
-                        <li>FUTSAL</li>
-                        <li>MANCING</li>
-                        <li>BERENANG</li>
-                        <li>RUNNING</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+
+        <div class="profile-section">
+
+            <div class="profile-card">
+
+                <div class="avatar">
+                    MG
+                </div>
+
+                <div class="profile-info">
+
+                    <h2>Marcello Gianfrancois</h2>
+
+                    <div class="nickname">
+                        Dave Mustine
+                    </div>
+
+                    <p><span>Tempat, Tanggal Lahir :</span> Kepulauan Banda, 15 Februari 2005</p>
+
+                    <p><span>Status :</span> Mahasiswa Informatika</p>
+
+                    <p><span>Kampus :</span> Universitas AKPRIND Yogyakarta</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <div class="card">
+
+                <h3>Riwayat Pendidikan</h3>
+
+                <ul>
+                    <li>SD - Stella Maris</li>
+                    <li>SMP - Seminari Sinar Buana Sumba</li>
+                    <li>SMA - Seminari Sinar Buana</li>
+                    <li>Kuliah - Universitas AKPRIND Yogyakarta</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Hobi & Aktivitas</h3>
+
+                <ul>
+                    <li>Mencari Hal-Hal Baru</li>
+                    <li>Futsal</li>
+                    <li>Mancing</li>
+                    <li>Berenang</li>
+                    <li>Running</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            © 2026 - Biodata Marcello Gianfrancois
+        </div>
+
     </div>
+
 </body>
 </html>
