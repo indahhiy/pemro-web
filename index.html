@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background: linear-gradient(to left, #002240, #3c0ca3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            background: linear-gradient(to right, #97c3e9, #8c88ff);
+            padding: 30px;
+            border-radius: 100px;
+            text-align: center;
+            width: 350px;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        button{
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: #0e4473;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #hasil{
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Siapa Namamu??</h2>
+
+        <input type="text" id="nama" placeholder="Masukkan nama">
+
+        <button onclick="sapaUser()">
+            Kirim
+        </button>
+
+        <p id="hasil"></p>
+    </div>
+
+    <script>
+        function sapaUser(){
+
+            let nama = document.getElementById("nama").value;
+
+            let hasil = document.getElementById("hasil");
+
+            hasil.innerHTML = "Halo dulur " + nama + ", selamat datang!";
+        }
+    </script>
+
+</body>
+</html>
