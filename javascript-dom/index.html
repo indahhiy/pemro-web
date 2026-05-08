@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Page</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .container{
+      background: white;
+      padding: 30px;
+      width: 350px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1{
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 32px;
+    }
+
+    input{
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #4facfe;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button{
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #4facfe;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover{
+      background: #008cff;
+    }
+
+    #hasil{
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hello 👋</h1>
+
+    <input type="text" id="nama" placeholder="Masukkan nama kamu">
+    
+    <button id="btnHello">Masuk</button>
+
+    <div id="hasil"></div>
+  </div>
+
+  <script>
+    const tombol = document.getElementById("btnHello");
+    const inputNama = document.getElementById("nama");
+    const hasil = document.getElementById("hasil");
+
+    tombol.addEventListener("click", function() {
+      let nama = inputNama.value;
+
+      if(nama === ""){
+        hasil.innerHTML = "Nama belum diisi!";
+      } else {
+        hasil.innerHTML = "Hello, " + nama + " 👋";
+      }
+    });
+  </script>
+
+</body>
+</html>
