@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapa User</title>
+    <style>
+        body { font-family: sans-serif; 
+               background: #f0f2f5;     
+               display: flex; 
+               justify-content: center; 
+               padding: 50px; }
+
+        .card { background: white; 
+                padding: 30px; 
+                border-radius: 12px; 
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+                width: 300px; 
+                text-align: center; }
+
+        input { width: 100%; 
+                padding: 10px; 
+                margin: 15px 0; 
+                border: 1px solid #ccc; 
+                border-radius: 6px; 
+                box-sizing: border-box; }
+
+        button { width: 100%; 
+                 padding: 10px; 
+                 border: none; 
+                 border-radius: 6px; 
+                 background: #007bff; 
+                 color: white; 
+                 cursor: pointer; }
+
+        button:hover { background: #0056b3; }
+        .hasil { font-weight: bold; 
+                 color: #da1a1a; 
+                 margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Haiiii</h1>
+    <input type="text" id="inputNama" placeholder="Masukkan nama Anda...">
+    <button onclick="sapaDirimu()">Sapa Saya</button>
+    <div id="hasil" class="hasil"></div>
+</div>
+
+<script>
+    function sapaDirimu() {
+        const nama = document.getElementById("inputNama").value;
+        const hasil = document.getElementById("hasil");
+        
+        if (nama !== "") {
+            hasil.innerHTML = "Halo, Selamat datang " + nama;
+        } else {
+            alert("Silakan masukkan nama Anda!");
+        }
+    }
+</script>
+
+</body>
+</html>
