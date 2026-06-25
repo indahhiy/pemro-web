@@ -110,12 +110,16 @@ switch($method){
         }
 
         $id = $query['id'];
-        mysqli_query($con," 
+        $delete = mysqli_query($con," 
         DELETE FROM data_buku
         WHERE id='$id'
         ");
 
-        send_response(true, "Data berhasil dihapus");
+        if ($delete && mysqli_affected_rows($con) > 0) {
+            send_response(true, "Data berhasil dihapus");
+        }
+
+        send_response(false, "Data tidak ditemukan");
         break;
 
     default:
